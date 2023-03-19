@@ -4,8 +4,39 @@ interface Props<T> {
   schema: { [Key in keyof T]: (value: T[Key]) => boolean }
 }
 
-function as<T extends Element>(element: Element) {
-  return element as T
+function handleInput<T>(inputElement: HTMLInputElement, formData: T) {
+  switch (inputElement.type) {
+    case 'radio':
+      if (inputElement.checked) {
+        formData[inputElement.name as keyof T] =
+          inputElement.value as unknown as T[keyof T]
+      }
+      break
+    case 'file':
+      formData[inputElement.name as keyof T] = Array.from(
+        inputElement.files ?? []
+      ) as unknown as T[keyof T]
+      break
+    case 'checkbox':
+      if (inputElement.checked) {
+        // @ts-ignore
+        formData[inputEl.name as keyof T] = formData.hasOwnProperty(
+          inputElement.name
+        )
+          ? [
+              ...(formData[
+                inputElement.name as keyof T
+              ] as unknown as string[]),
+              inputElement.value
+            ]
+          : [inputElement.value]
+      }
+      break
+    default:
+      formData[inputElement.name as keyof T] =
+        inputElement.value as unknown as T[keyof T]
+      break
+  }
 }
 
 function addFormData<T>(formElement: Element, formData: T) {
@@ -14,51 +45,31 @@ function addFormData<T>(formElement: Element, formData: T) {
 
   switch (formElement.tagName.toLowerCase()) {
     case 'input':
-      const inputEl = as<HTMLInputElement>(formElement)
+      const inputEl = formElement as HTMLInputElement
 
-      if (inputEl.type === 'radio') {
-        if (inputEl.checked) {
-          formData[inputEl.name as keyof T] =
-            inputEl.value as unknown as T[keyof T]
-        }
-      } else if (inputEl.type === 'checkbox') {
-        if (inputEl.checked) {
-          // @ts-ignore
-          formData[inputEl.name as keyof T] = formData.hasOwnProperty(
-            inputEl.name
-          )
-            ? [
-                ...(formData[inputEl.name as keyof T] as unknown as string[]),
-                inputEl.value
-              ]
-            : [inputEl.value]
-        }
-      } else {
-        formData[inputEl.name as keyof T] =
-          inputEl.value as unknown as T[keyof T]
-      }
+      handleInput(inputEl, formData)
       break
     case 'select':
-      const selectEl = as<HTMLSelectElement>(formElement)
+      const selectEl = formElement as HTMLSelectElement
 
       formData[selectEl.name as keyof T] = Array.from(
         selectEl.selectedOptions
       ).map((option) => option.value) as unknown as T[keyof T]
       break
     case 'textarea':
-      const textAreaEl = as<HTMLTextAreaElement>(formElement)
+      const textAreaEl = formElement as HTMLTextAreaElement
 
       formData[textAreaEl.name as keyof T] =
         textAreaEl.value as unknown as T[keyof T]
       break
     case 'output':
-      const outputEl = as<HTMLOutputElement>(formElement)
+      const outputEl = formElement as HTMLOutputElement
 
       formData[outputEl.name as keyof T] =
         outputEl.value as unknown as T[keyof T]
       break
     case 'fieldset':
-      const fieldSetEl = as<HTMLFieldSetElement>(formElement)
+      const fieldSetEl = formElement as HTMLFieldSetElement
 
       for (const fieldSetChild of Array.from(fieldSetEl.children)) {
         addFormData(fieldSetChild, formData)
