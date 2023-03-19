@@ -1,10 +1,10 @@
 {
-  "name": "use-simepleform",
+  "name": "use-simpleform",
   "version": "1.0.0",
   "description": "A powerful form library for error handling and managing input values without the need for controlled components, allowing you to write more concise and readable code.",
   "author": "lucasftz",
   "license": "MIT",
-  "repository": "lucasftz/use-simepleform",
+  "repository": "lucasftz/use-simpleform",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
