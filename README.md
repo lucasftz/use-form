@@ -41,8 +41,6 @@ function Example() {
 
 ## API
 
-Here, you can list and describe the available functions, classes, and options. For example:
-
 ```ts
 interface ReturnType<T> {
   errors: { [Key in keyof TFormData]: boolean },
