@@ -1,6 +1,6 @@
 {
-  "short_name": "use-simpleform",
-  "name": "use-simpleform",
+  "short_name": "use-form",
+  "name": "@lucasftz/use-form",
   "icons": [
     {
       "src": "favicon.ico",

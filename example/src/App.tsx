@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useForm } from 'use-simpleform'
+import { useForm } from '@lucasftz/use-form'
 
 function validateUsername(username: string) {
   const takenUsernames: (string | number)[] = ['John Doe', 'John Smith']

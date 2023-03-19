@@ -1,13 +1,13 @@
-# use-simpleform
+# @lucasftz/use-form
 
 > A powerful form library for error handling and managing input values without the need for controlled components, allowing you to write more concise and readable code.
 
-[![NPM](https://img.shields.io/npm/v/use-simpleform.svg)](https://www.npmjs.com/package/use-simpleform) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/@lucasftz/use-form.svg)](https://www.npmjs.com/package/@lucasftz/use-form) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save use-simpleform
+npm install --save @lucasftz/use-form
 ```
 
 ## Quickstart
@@ -15,7 +15,7 @@ npm install --save use-simpleform
 ```tsx
 import React from 'react'
 
-import { useForm } from 'use-simpleform'
+import { useForm } from '@lucasftz/use-form'
 
 interface FormData {
   username: string;
