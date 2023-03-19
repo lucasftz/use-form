@@ -43,7 +43,7 @@ function Example() {
 
 ```ts
 interface ReturnType<T> {
-  errors: { [Key in keyof TFormData]: boolean },
+  errors: { [Key in keyof T]: boolean },
   formHandler: ({ e, formData }: { e: SyntheticEvent<HTMLFormElement>, formData: T }) => void
 }
 
