@@ -32,7 +32,7 @@ const App = () => {
       <input type='text' name='username' placeholder='username' />
       {errors.username && <span>Invalid username</span>}
       <input type='password' name='password' placeholder='password' />
-      {errors.username && <span>Invalid password</span>}
+      {errors.password && <span>Invalid password</span>}
     </form>
   )
 }
