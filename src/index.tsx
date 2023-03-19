@@ -18,7 +18,8 @@ function addFormData<T>(formElement: Element, formData: T) {
 
       if (inputEl.type === 'radio') {
         if (inputEl.checked) {
-          formData[inputEl.name as keyof T] = inputEl.value as T[keyof T]
+          formData[inputEl.name as keyof T] =
+            inputEl.value as unknown as T[keyof T]
         }
       } else if (inputEl.type === 'checkbox') {
         if (inputEl.checked) {
@@ -27,13 +28,14 @@ function addFormData<T>(formElement: Element, formData: T) {
             inputEl.name
           )
             ? [
-                ...(formData[inputEl.name as keyof T] as string[]),
+                ...(formData[inputEl.name as keyof T] as unknown as string[]),
                 inputEl.value
               ]
             : [inputEl.value]
         }
       } else {
-        formData[inputEl.name as keyof T] = inputEl.value as T[keyof T]
+        formData[inputEl.name as keyof T] =
+          inputEl.value as unknown as T[keyof T]
       }
       break
     case 'select':
@@ -41,17 +43,19 @@ function addFormData<T>(formElement: Element, formData: T) {
 
       formData[selectEl.name as keyof T] = Array.from(
         selectEl.selectedOptions
-      ).map((option) => option.value) as T[keyof T]
+      ).map((option) => option.value) as unknown as T[keyof T]
       break
     case 'textarea':
       const textAreaEl = as<HTMLTextAreaElement>(formElement)
 
-      formData[textAreaEl.name as keyof T] = textAreaEl.value as T[keyof T]
+      formData[textAreaEl.name as keyof T] =
+        textAreaEl.value as unknown as T[keyof T]
       break
     case 'output':
       const outputEl = as<HTMLOutputElement>(formElement)
 
-      formData[outputEl.name as keyof T] = outputEl.value as T[keyof T]
+      formData[outputEl.name as keyof T] =
+        outputEl.value as unknown as T[keyof T]
       break
     case 'fieldset':
       const fieldSetEl = as<HTMLFieldSetElement>(formElement)
