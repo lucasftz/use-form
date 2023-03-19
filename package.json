@@ -1,6 +1,6 @@
 {
   "name": "@lucasftz/use-form",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A powerful form library for error handling and managing input values without the need for controlled components, allowing you to write more concise and readable code.",
   "author": "lucasftz",
   "license": "MIT",
