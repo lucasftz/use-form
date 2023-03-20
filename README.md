@@ -28,7 +28,9 @@ function Example() {
     },
   });
 
-  const handleSubmit = formHandler(({ e, formData }) => {});
+  const handleSubmit = formHandler(({ e, formData }) => {
+    console.log(formData); // { username: "..." }
+  });
 
   return (
     <form onSubmit={handleSubmit}>
